@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Build Image') {
             steps {
-                sh 'docker build -t apache-html-web:${version} declarative/apache-html-web/.'
+                sh 'docker build -t pawanitzone/apache-html-web:${version} declarative/apache-html-web/.'
             }
         }
         stage("Deploy Artifact") {
            steps{
              script{
               withDockerRegistry(credentialsId: 'dockerhublogin', url: 'https://hub.docker.com/') {
-                 sh 'docker push -t apache-html-web:${version}'
+                 sh 'docker push -t pawanitzone/apache-html-web:${version}'
               }
              }
            }
