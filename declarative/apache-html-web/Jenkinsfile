@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Image') {
             steps {
-                sh 'docker build -t apache-html-web:${version} declarative/apache-html-web/Dockerfile'
+                sh 'docker build -t apache-html-web:${version} declarative/apache-html-web/.'
             }
         }
         stage("Deploy Artifact") {
