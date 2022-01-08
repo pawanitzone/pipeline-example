@@ -10,7 +10,7 @@ pipeline {
         stage("Deploy Artifact") {
            steps{
              script{
-              withDockerRegistry(credentialsId: 'dockerhublogin', url: 'https://hub.docker.com/') {
+              withDockerRegistry(credentialsId: 'dockerhublogin') {
                  sh 'docker push -t pawanitzone/apache-html-web:${version}'
               }
              }
