@@ -11,10 +11,15 @@ pipeline {
            steps{
              script{
               withDockerRegistry(credentialsId: 'dockerhublogin') {
-                 sh 'docker push -t pawanitzone/apache-html-web:${version}'
+                 sh 'docker push pawanitzone/apache-html-web:${version}'
               }
              }
            }
          }
+        stage('Remove docker image from jenkin host'){
+            steps{
+             sh 'docker rmi pawanitzone/apache-html-web:${version}'
+            }
+        }
     }
 }
